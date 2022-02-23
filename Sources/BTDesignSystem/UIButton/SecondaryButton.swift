@@ -19,8 +19,8 @@ public class SecondaryButton: UIButton {
         translatesAutoresizingMaskIntoConstraints = false
         layer.cornerRadius = 4
         layer.borderWidth = 1
-        layer.borderColor = UIColor.primaryColor().cgColor
-        setTitleColor(.primaryColor(), for: .normal)
+        layer.borderColor = UIColor.color(.primary).cgColor
+        setTitleColor(.color(.primary), for: .normal)
         setTitle(title, for: .normal)
         
         heightAnchor(equalTo: 50)

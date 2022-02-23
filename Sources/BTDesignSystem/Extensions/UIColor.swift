@@ -9,37 +9,28 @@ import UIKit
 
 extension UIColor {
     
-    convenience init(hexString: String, alpha: CGFloat = 1.0) {
-        let hexString: String = hexString.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
-        let scanner = Scanner(string: hexString)
-        if (hexString.hasPrefix("#")) {
-            scanner.scanLocation = 1
+    public static func color(_ color: ColorType) -> UIColor {
+        switch color {
+        case .primary:
+           return #colorLiteral(red: 0, green: 0.5674290061, blue: 0.5275757313, alpha: 1)
+        case .secondary:
+           return #colorLiteral(red: 0, green: 0.7305232882, blue: 0.6851475239, alpha: 1)
+        case .tertiary:
+           return #colorLiteral(red: 0, green: 0.7305232882, blue: 0.6851475239, alpha: 1)
+        case .background:
+           return #colorLiteral(red: 0.7607084513, green: 0.7608374953, blue: 0.7606915236, alpha: 1)
+        case .blur:
+           return #colorLiteral(red: 0.3999576569, green: 0.4000295997, blue: 0.3999481499, alpha: 1)
         }
-        var color: UInt32 = 0
-        scanner.scanHexInt32(&color)
-        let mask = 0x000000FF
-        let r = Int(color >> 16) & mask
-        let g = Int(color >> 8) & mask
-        let b = Int(color) & mask
-        let red   = CGFloat(r) / 255.0
-        let green = CGFloat(g) / 255.0
-        let blue  = CGFloat(b) / 255.0
-        self.init(red:red, green:green, blue:blue, alpha:alpha)
     }
     
-    public static func primaryColor() -> UIColor {
-        UIColor(hexString: "#0BD0C4")
-    }
-    
-    public static func textFieldBackgroundColor() -> UIColor {
-        UIColor(hexString: "#FAFAFA")
-    }
-    
-    public static func textFieldBorderColor() -> UIColor {
-        UIColor(red: 0, green: 0, blue: 0, alpha: 0.13)
-    }
-    
-    public static func defaultTextColor() -> UIColor {
-        UIColor(hexString: "#C2C2C2")
-    }
 }
+
+public enum ColorType {
+    case primary
+    case secondary
+    case tertiary
+    case background
+    case blur
+}
+

@@ -21,7 +21,7 @@ public class PrimaryTextField: UITextField {
         setLeftPaddingPoints(10)
         layer.borderWidth = 1
         layer.cornerRadius = 4
-        backgroundColor = .textFieldBackgroundColor()
-        layer.borderColor = UIColor.textFieldBorderColor().cgColor
+        backgroundColor = .color(.background)
+        layer.borderColor = UIColor.color(.blur).cgColor
     }
 }

@@ -18,7 +18,7 @@ public class PrimaryButton: UIButton {
         
         translatesAutoresizingMaskIntoConstraints = false
         layer.cornerRadius = 4
-        backgroundColor = .primaryColor()
+        backgroundColor = .color(.primary)
         setTitle(title, for: .normal)
         
         heightAnchor(equalTo: 50)
