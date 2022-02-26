@@ -7,7 +7,7 @@
 
 import UIKit
 
-public class BaseViewController<View>: UIViewController, UITableViewDelegate, UITableViewDataSource where View: UIView {
+open class BaseViewController<View>: UIViewController, UITableViewDelegate, UITableViewDataSource where View: UIView {
     
     public var associatedView: View? { return self.view as? View }
     
