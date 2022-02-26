@@ -1,18 +1,18 @@
 //
 //  BaseViewController.swift
-//  
 //
-//  Created by Fellipe Thufik Costa Gomes Hoashi  on 23/02/22.
+//
+//  Created by Rodrigo Baroni  on 23/02/22.
 //
 
 import UIKit
 
-open class BaseViewController<View>: UIViewController, UITableViewDelegate, UITableViewDataSource where View: UIView {
+open class BaseViewController<View, Delegate>: UIViewController, UITableViewDelegate, UITableViewDataSource where View: UIView, Delegate: AnyObject {
     
     public var associatedView: View? { return self.view as? View }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return BaseTableViewCell(view: View())
+        return BaseTableViewCell(view: BasedView(view: View(), delegate: Delegate.self))
     }
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -25,6 +25,51 @@ open class BaseViewController<View>: UIViewController, UITableViewDelegate, UITa
     }
     
 }
+
+class BasedView: UIView {
+    
+    private weak var baseDelegate: AnyObject?
+    private weak var backgroundView: UIView?
+    
+    init(view: UIView, delegate: AnyObject) {
+        baseDelegate = delegate
+        backgroundView = view
+        super.init(frame: .zero)
+        self.setupView()
+        self.translatesAutoresizingMaskIntoConstraints = false
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+}
+
+extension BasedView: BTViewCode {
+    
+    private func unwreappeView() -> UIView {
+        guard let view = backgroundView else {
+            return UIView()
+        }
+        return view
+    }
+    
+    func setupHierarchy() {
+        addSubview(unwreappeView())
+    }
+    
+    func setupConstraints() {
+        unwreappeView().topAnchor(equalTo: self.topAnchor)
+        unwreappeView().bottomAnchor(equalTo: self.bottomAnchor)
+        unwreappeView().leadingAnchor(equalTo: self.leadingAnchor)
+        unwreappeView().trailingAnchor(equalTo: self.trailingAnchor)
+    }
+    
+    func setupConfigurations() {
+        self.translatesAutoresizingMaskIntoConstraints = false
+    }
+}
+
 
 class BaseView: UIView {
     
