@@ -94,18 +94,19 @@ class BaseTableViewCell: UITableViewCell {
 extension BaseTableViewCell: BTViewCode {
     
     func setupHierarchy() {
-        addSubview(baseView)
+        contentView.addSubview(baseView)
     }
     
     func setupConstraints() {
-        baseView.topAnchor(equalTo: self.topAnchor)
-        baseView.bottomAnchor(equalTo: self.bottomAnchor)
-        baseView.leadingAnchor(equalTo: self.leadingAnchor)
-        baseView.trailingAnchor(equalTo: self.trailingAnchor)
+        baseView.topAnchor(equalTo: self.contentView.topAnchor)
+        baseView.bottomAnchor(equalTo: self.contentView.bottomAnchor)
+        baseView.leadingAnchor(equalTo: self.contentView.leadingAnchor)
+        baseView.trailingAnchor(equalTo: self.contentView.trailingAnchor)
     }
     
     func setupConfigurations() {
         baseView.translatesAutoresizingMaskIntoConstraints = false
+        self.selectionStyle = .none
     }
     
 }
