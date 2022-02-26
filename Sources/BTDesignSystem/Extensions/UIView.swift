@@ -8,6 +8,14 @@
 import UIKit
 
 extension UIView {
+    
+    public func roundCorners(corners:UIRectCorner, radius: CGFloat) {
+      let path = UIBezierPath(roundedRect: self.bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
+      let mask = CAShapeLayer()
+      mask.path = path.cgPath
+      self.layer.mask = mask
+    }
+    
     // MARK: - TopAnchor
     
     @discardableResult public func topAnchor(equalTo anchor: NSLayoutYAxisAnchor, constant: CGFloat = 0, priority: UILayoutPriority = UILayoutPriority.required) -> Self {

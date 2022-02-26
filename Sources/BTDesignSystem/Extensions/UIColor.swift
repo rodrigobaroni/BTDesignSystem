@@ -23,7 +23,6 @@ extension UIColor {
            return #colorLiteral(red: 0.3999576569, green: 0.4000295997, blue: 0.3999481499, alpha: 1)
         }
     }
-    
 }
 
 public enum ColorType {
