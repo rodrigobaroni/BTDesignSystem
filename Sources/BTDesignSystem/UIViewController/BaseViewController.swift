@@ -7,9 +7,9 @@
 
 import UIKit
 
-class BaseViewController<View>: UIViewController, UITableViewDelegate, UITableViewDataSource where View: UIView {
+public class BaseViewController<View>: UIViewController, UITableViewDelegate, UITableViewDataSource where View: UIView {
     
-    var associatedView: View? { return self.view as? View }
+    public var associatedView: View? { return self.view as? View }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         return BaseTableViewCell(view: View())
