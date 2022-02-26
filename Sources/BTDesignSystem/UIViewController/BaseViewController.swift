@@ -11,15 +11,15 @@ public class BaseViewController<View>: UIViewController, UITableViewDelegate, UI
     
     public var associatedView: View? { return self.view as? View }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         return BaseTableViewCell(view: View())
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
     
-    override func loadView() {
+    public override func loadView() {
         super.loadView()
         self.view = BaseView(tableViewDelegate: self)
     }
