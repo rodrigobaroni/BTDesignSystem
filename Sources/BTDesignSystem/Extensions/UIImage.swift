@@ -64,6 +64,10 @@ extension UIImage {
         UIImage(named: "MyMedicinesIcon") ?? UIImage()
     }
     
+    public static func chevronDown() -> UIImage {
+        UIImage(named: "chevronDown") ?? UIImage()
+    }
+    
     public static func medicinesConfiguration() -> UIImage {
         UIImage()
     }

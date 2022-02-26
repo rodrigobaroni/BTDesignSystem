@@ -9,7 +9,7 @@ import UIKit
 
 public class ContentTableViewCell: UITableViewCell {
 
-    private lazy var titleLabel: TextLabel = TextLabel(text: title, fontSize: .medium)
+    private lazy var titleLabel = MediumTextLabel(text: title)
     
     private lazy var contentImageView: UIImageView = {
         let imageView = UIImageView(image: contentImage)

@@ -40,7 +40,7 @@ public class HeaderTableViewCell: UITableViewCell {
         return view
     }()
     
-    private lazy var titleLabel: TextLabel = TextLabel(text: title, fontSize: .medium)
+    private lazy var titleLabel = MediumTextLabel(text: title)
     
     required init?(coder: NSCoder) {
         nil

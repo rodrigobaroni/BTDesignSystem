@@ -9,21 +9,33 @@ import UIKit
 
 extension UIFont {
     public static func font(_ type: FontSize) -> UIFont {
-        
-        let fontName = "Roboto-Regular"
-        
         var font: UIFont?
         
         switch type {
         case .small:
-            font =  UIFont(name: fontName, size: 18)
+            font = .systemFont(ofSize: 14)
         case .medium:
-            font = UIFont(name: fontName, size: 20)
+            font = .systemFont(ofSize: 16)
         case .high:
-            font =  UIFont(name: fontName, size: 24)
+            font = .systemFont(ofSize: 24)
         }
         
-        return font ?? .systemFont(ofSize: 18)
+        return font ?? .systemFont(ofSize: 16)
+    }
+    
+    public static func boldFont(_ type: FontSize) -> UIFont {
+        var font: UIFont?
+        
+        switch type {
+        case .small:
+            font = .boldSystemFont(ofSize: 14)
+        case .medium:
+            font = .boldSystemFont(ofSize: 16)
+        case .high:
+            font = .boldSystemFont(ofSize: 24)
+        }
+        
+        return font ?? .boldSystemFont(ofSize: 16)
     }
 }
 

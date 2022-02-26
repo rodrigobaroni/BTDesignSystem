@@ -27,7 +27,7 @@ public class MedicinesStackView: UIStackView {
 extension MedicinesStackView: BTViewCode {
     public func setupHierarchy() {
         for (index, item) in items.enumerated() {
-            let label = TextLabel(text: item, fontSize: .medium)
+            let label = MediumTextLabel(text: item)
             
             addArrangedSubview(label)
             
