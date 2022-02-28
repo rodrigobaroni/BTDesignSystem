@@ -43,9 +43,9 @@ import SwiftUI
  }*/
 public struct UIViewPreview<View: UIView>: UIViewRepresentable {
     
-    let view: View
+    public let view: View
     
-    init(_ builder: @escaping () -> View) {
+    public init(_ builder: @escaping () -> View) {
         view = builder()
     }
     
