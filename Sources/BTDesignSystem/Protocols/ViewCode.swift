@@ -27,3 +27,36 @@ public extension BTViewCode {
         setupConfigurations()
     }
 }
+
+import Foundation
+import SwiftUI
+
+/**
+ This part of code is use to show previews using UIKit
+    - Author: Rodrigo Baroni
+ - Warning: Only use this if you want to show te preview of your view
+ 
+ struct PreviewView_Previews: PreviewProvider {
+ static var previews: some View {
+ PreviewView()
+ }
+ }*/
+struct UIViewPreview<View: UIView>: UIViewRepresentable {
+    
+    let view: View
+    
+    init(_ builder: @escaping () -> View) {
+        view = builder()
+    }
+    
+    func makeUIView(context: Context) -> some UIView {
+        return view
+    }
+    
+    func updateUIView(_ uiView: UIViewType, context: Context) {
+        uiView.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+        uiView.setContentHuggingPriority(.defaultHigh, for: .vertical)
+    }
+    
+}
+
