@@ -41,7 +41,7 @@ import SwiftUI
  PreviewView()
  }
  }*/
-struct UIViewPreview<View: UIView>: UIViewRepresentable {
+public struct UIViewPreview<View: UIView>: UIViewRepresentable {
     
     let view: View
     
@@ -49,11 +49,11 @@ struct UIViewPreview<View: UIView>: UIViewRepresentable {
         view = builder()
     }
     
-    func makeUIView(context: Context) -> some UIView {
+    public func makeUIView(context: Context) -> some UIView {
         return view
     }
     
-    func updateUIView(_ uiView: UIViewType, context: Context) {
+    public func updateUIView(_ uiView: UIViewType, context: Context) {
         uiView.setContentHuggingPriority(.defaultHigh, for: .horizontal)
         uiView.setContentHuggingPriority(.defaultHigh, for: .vertical)
     }
