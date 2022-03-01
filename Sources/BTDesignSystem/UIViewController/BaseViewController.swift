@@ -25,6 +25,14 @@ public extension BaseImplementations {
 
 open class BaseViewController<View>: UIViewController, UITableViewDelegate, UITableViewDataSource, BaseImplementations where View: UIView {
     
+    public func setupActions() {
+        
+    }
+    
+    public func setupDelegates() {
+        
+    }
+    
     open override func viewDidLoad() {
         super.viewDidLoad()
         setupController()
