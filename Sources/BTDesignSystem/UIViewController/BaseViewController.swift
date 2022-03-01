@@ -34,6 +34,7 @@ class BaseView: UIView {
         baseTableView.separatorStyle = .none
         baseTableView.register(BaseTableViewCell.self, forCellReuseIdentifier: "BaseCell")
         baseTableView.rowHeight = UITableView.automaticDimension
+        baseTableView.estimatedRowHeight = 80
         baseTableView.alwaysBounceVertical = false
         baseTableView.translatesAutoresizingMaskIntoConstraints = false
         baseTableView.delegate = tableViewDelegate
