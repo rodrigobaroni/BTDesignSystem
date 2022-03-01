@@ -12,7 +12,8 @@ open class BaseViewController<View>: UIViewController, UITableViewDelegate, UITa
     public var associatedView: View?
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return BaseTableViewCell(view: View())
+        associatedView = View()
+        return BaseTableViewCell(view: associatedView)
     }
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -22,7 +23,6 @@ open class BaseViewController<View>: UIViewController, UITableViewDelegate, UITa
     public override func loadView() {
         super.loadView()
         self.view = BaseView(tableViewDelegate: self)
-        self.associatedView = View()
     }
     
 }
