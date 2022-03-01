@@ -13,7 +13,10 @@ open class BaseViewController<View>: UIViewController, UITableViewDelegate, UITa
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         associatedView = View()
-        return BaseTableViewCell(view: associatedView)
+        guard let incomingView = associatedView else {
+            return UITableViewCell()
+        }
+        return BaseTableViewCell(view: incomingView)
     }
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
