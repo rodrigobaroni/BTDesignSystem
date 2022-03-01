@@ -9,14 +9,10 @@ import UIKit
 
 open class BaseViewController<View>: UIViewController, UITableViewDelegate, UITableViewDataSource where View: UIView {
     
-    public var associatedView: View?
+    public var associatedView = View()
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        associatedView = View()
-        guard let incomingView = associatedView else {
-            return UITableViewCell()
-        }
-        return BaseTableViewCell(view: incomingView)
+        return BaseTableViewCell(view: associatedView)
     }
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
