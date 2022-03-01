@@ -7,7 +7,28 @@
 
 import UIKit
 
-open class BaseViewController<View>: UIViewController, UITableViewDelegate, UITableViewDataSource where View: UIView {
+public protocol BaseImplementations: AnyObject {
+    func setupActions()
+    func setupDelegates()
+}
+public extension BaseImplementations {
+    func setupActions() {}
+    func setupDelegates() {}
+}
+
+public extension BaseImplementations {
+    func setupController() {
+        setupActions()
+        setupDelegates()
+    }
+}
+
+open class BaseViewController<View>: UIViewController, UITableViewDelegate, UITableViewDataSource, BaseImplementations where View: UIView {
+    
+    open override func viewDidLoad() {
+        super.viewDidLoad()
+        setupController()
+    }
     
     public var associatedView = View()
     
