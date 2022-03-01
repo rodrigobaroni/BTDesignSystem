@@ -9,7 +9,7 @@ import UIKit
 
 open class BaseViewController<View>: UIViewController, UITableViewDelegate, UITableViewDataSource where View: UIView {
     
-    public var associatedView: View? { return self.view as? View }
+    public var associatedView: View?
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         return BaseTableViewCell(view: View())
@@ -22,6 +22,7 @@ open class BaseViewController<View>: UIViewController, UITableViewDelegate, UITa
     public override func loadView() {
         super.loadView()
         self.view = BaseView(tableViewDelegate: self)
+        self.associatedView = View()
     }
     
 }
