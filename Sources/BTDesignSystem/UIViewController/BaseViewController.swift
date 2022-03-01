@@ -25,11 +25,11 @@ public extension BaseImplementations {
 
 open class BaseViewController<View>: UIViewController, UITableViewDelegate, UITableViewDataSource, BaseImplementations where View: UIView {
     
-    public func setupActions() {
+    open func setupActions() {
         
     }
     
-    public func setupDelegates() {
+    open func setupDelegates() {
         
     }
     
