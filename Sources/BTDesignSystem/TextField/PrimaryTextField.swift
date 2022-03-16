@@ -22,6 +22,6 @@ public class PrimaryTextField: UITextField {
         layer.borderWidth = 1
         layer.cornerRadius = 4
         backgroundColor = .color(.background)
-        layer.borderColor = UIColor.color(.blur).cgColor
+        layer.borderColor = UIColor.color(.background).cgColor
     }
 }

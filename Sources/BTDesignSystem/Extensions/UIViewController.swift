@@ -27,4 +27,26 @@ extension UIViewController {
         return Preview(viewController: self)
     }
     
+    public func showLoading() {
+        let activityIndicator = UIActivityIndicatorView(style: .medium)
+        
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        activityIndicator.startAnimating()
+        
+        view.addSubview(activityIndicator)
+        
+        activityIndicator.centerYAnchor(equalTo: view.centerYAnchor)
+        activityIndicator.centerXAnchor(equalTo: view.centerXAnchor)
+    }
+    
+    public func hideLoading() {
+        view.subviews.forEach { view in
+            guard let v = view as? UIActivityIndicatorView else {
+                return
+            }
+            
+            v.removeFromSuperview()
+        }
+    }
+    
 }

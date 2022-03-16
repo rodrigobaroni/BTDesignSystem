@@ -11,6 +11,12 @@ public var __maxLengths = [UITextField: Int]()
 
 public var __mask = [UITextField: Mask]()
 
+public enum TextFieldState {
+    case normal
+    case error
+    case empty(String)
+}
+
 extension UITextField {
     public var xmask: Mask {
         get {
@@ -57,6 +63,22 @@ extension UITextField {
         let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: amount, height: self.frame.size.height))
         self.rightView = paddingView
         self.rightViewMode = .always
+    }
+    
+    public func setState(type: TextFieldState) {
+        switch type {
+        case .normal:
+            layer.borderColor = UIColor.color(.background).cgColor
+        case .error:
+            layer.borderColor = UIColor.red.cgColor
+        case .empty(let message):
+            attributedPlaceholder = NSAttributedString(
+                string: message,
+                attributes: [NSAttributedString.Key.foregroundColor: UIColor.red]
+            )
+            
+            layer.borderColor = UIColor.red.cgColor
+        }
     }
 }
 
@@ -222,6 +244,7 @@ public enum ValidationType {
     case phoneNo(Int)
     case alphabeticStringWithSpace(String)
     case password
+    case passwordLength
     case fullName
     case cpfCnpj
     case number(String)
@@ -323,6 +346,10 @@ public class Validation: NSObject {
                 if let tempValue = isValidString((valueToBeChecked.inputValue, .password, .emptyPSW, .inValidPSW)) {
                     return tempValue
                 }
+            case .passwordLength:
+                if let tempValue = hasNeccessaryLength((valueToBeChecked.inputValue, 3)) {
+                    return tempValue
+                }
             case .fullName:
                 if let tempValue = isValidString((valueToBeChecked.inputValue, .fullName, .emptyFullName, .invalidFullName)) {
                     return tempValue
@@ -386,6 +413,16 @@ public class Validation: NSObject {
         } else if isValidRegEx(input.text, input.regex) != true {
             return .failure(.error, input.invalidAlert)
         }
+        return nil
+    }
+    
+    public func hasNeccessaryLength(_ input: (text: String, length: Int)) -> Valid? {
+        if input.text.isEmpty {
+            return .failure(.error, .empty(""))
+        } else if input.text.count < input.length {
+            return .failure(.error, .invalid(""))
+        }
+        
         return nil
     }
     

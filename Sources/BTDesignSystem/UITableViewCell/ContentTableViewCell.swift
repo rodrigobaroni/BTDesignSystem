@@ -12,11 +12,11 @@ public class ContentTableViewCell: UITableViewCell {
     private lazy var titleLabel = MediumTextLabel(text: title)
     
     private lazy var contentImageView: UIImageView = {
-        let imageView = UIImageView(image: contentImage)
+        let imageView = UIImageView()
         
-        imageView.layer.cornerRadius = 40
+        imageView.layer.cornerRadius = 20
         imageView.backgroundColor = .color(.primary)
-        imageView.contentMode = .scaleAspectFill
+        imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
         
         return imageView
@@ -27,7 +27,7 @@ public class ContentTableViewCell: UITableViewCell {
         
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .color(.background)
-        view.layer.cornerRadius = 40
+        view.layer.cornerRadius = 8
         
         return view
     }()
@@ -62,11 +62,10 @@ extension ContentTableViewCell: BTViewCode {
     }
     
     public func setupConstraints() {
-        contentImageView.topAnchor(equalTo: defaultView.topAnchor)
-        contentImageView.bottomAnchor(equalTo: defaultView.bottomAnchor)
-        contentImageView.leadingAnchor(equalTo: defaultView.leadingAnchor)
-        contentImageView.heightAnchor(equalTo: 80)
-        contentImageView.widthAnchor(equalTo: 80)
+        contentImageView.leadingAnchor(equalTo: defaultView.leadingAnchor, constant: 16)
+        contentImageView.centerYAnchor(equalTo: centerYAnchor)
+        contentImageView.heightAnchor(equalTo: 40)
+        contentImageView.widthAnchor(equalTo: 40)
         
         titleLabel.leadingAnchor(equalTo: contentImageView.trailingAnchor, constant: 16)
         titleLabel.centerYAnchor(equalTo: defaultView.centerYAnchor)
@@ -75,6 +74,8 @@ extension ContentTableViewCell: BTViewCode {
         defaultView.leadingAnchor(equalTo: leadingAnchor, constant: 16)
         defaultView.trailingAnchor(equalTo: trailingAnchor, constant: -16)
         defaultView.bottomAnchor(equalTo: bottomAnchor, constant: -16)
+        
+        heightAnchor(equalTo: 90)
     }
     
     public func setupConfigurations() {
