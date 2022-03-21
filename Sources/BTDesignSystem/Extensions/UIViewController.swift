@@ -30,6 +30,7 @@ extension UIViewController {
     public func showLoading() {
         let activityIndicator = UIActivityIndicatorView(style: .medium)
         
+        activityIndicator.tintColor = .color(.primary)
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false
         activityIndicator.startAnimating()
         

@@ -12,7 +12,7 @@ extension UIColor {
     public static func color(_ color: ColorType) -> UIColor {
         switch color {
         case .primary:
-           return #colorLiteral(red: 0, green: 0.5674290061, blue: 0.5275757313, alpha: 1)
+           return #colorLiteral(red: 0, green: 0.7305232882, blue: 0.6851475239, alpha: 1)
         case .secondary:
            return #colorLiteral(red: 0, green: 0.7305232882, blue: 0.6851475239, alpha: 1)
         case .tertiary:
