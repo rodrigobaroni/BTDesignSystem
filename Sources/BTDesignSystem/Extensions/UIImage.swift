@@ -17,6 +17,10 @@ extension UIImage {
     }
     
     public static func home() -> UIImage {
+        UIImage(named: "homeIcon") ?? UIImage()
+    }
+    
+    public static func myHealth() -> UIImage {
         UIImage(named: "MyHealthIcon") ?? UIImage()
     }
     

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 public class TextLabel: UILabel {
 
@@ -14,7 +15,7 @@ public class TextLabel: UILabel {
         nil
     }
     
-    public init(text: String, fontSize: FontSize, textColor: UIColor, isBold: Bool) {
+    public init(text: String, fontSize: FontSize, textColor: UIColor, isBold: Bool, alignment: NSTextAlignment) {
         super.init(frame: .zero)
         
         self.text = text
@@ -26,6 +27,8 @@ public class TextLabel: UILabel {
             self.font = .font(fontSize)
         }
         
+        textAlignment = alignment
+        numberOfLines = 0
         translatesAutoresizingMaskIntoConstraints = false
     }
 }
@@ -36,8 +39,8 @@ public class SmallTextLabel: TextLabel {
         nil
     }
     
-    public init(text: String, textColor: UIColor = .black, isBold: Bool = false) {
-        super.init(text: text, fontSize: .small, textColor: textColor, isBold: isBold)
+    public init(text: String, textColor: UIColor = .black, isBold: Bool = false, aligment: NSTextAlignment = .natural) {
+        super.init(text: text, fontSize: .small, textColor: textColor, isBold: isBold, alignment: aligment)
     }
 }
 
@@ -47,8 +50,8 @@ public class MediumTextLabel: TextLabel {
         nil
     }
     
-    public init(text: String, textColor: UIColor = .black, isBold: Bool = false) {
-        super.init(text: text, fontSize: .small, textColor: textColor, isBold: isBold)
+    public init(text: String, textColor: UIColor = .black, isBold: Bool = false, aligment: NSTextAlignment = .natural) {
+        super.init(text: text, fontSize: .medium, textColor: textColor, isBold: isBold, alignment: aligment)
     }
 }
 
@@ -58,7 +61,7 @@ public class HighTextLabel: TextLabel {
         nil
     }
     
-    public init(text: String, textColor: UIColor = .black, isBold: Bool = false) {
-        super.init(text: text, fontSize: .small, textColor: textColor, isBold: isBold)
+    public init(text: String, textColor: UIColor = .black, isBold: Bool = false, aligment: NSTextAlignment = .natural) {
+        super.init(text: text, fontSize: .high, textColor: textColor, isBold: isBold, alignment: aligment)
     }
 }

@@ -28,26 +28,44 @@ extension UIViewController {
     }
     
     public func showLoading() {
-        let activityIndicator = UIActivityIndicatorView(style: .medium)
-        
-        activityIndicator.tintColor = .color(.primary)
-        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
-        activityIndicator.startAnimating()
-        
-        view.addSubview(activityIndicator)
-        
-        activityIndicator.centerYAnchor(equalTo: view.centerYAnchor)
-        activityIndicator.centerXAnchor(equalTo: view.centerXAnchor)
-    }
-    
-    public func hideLoading() {
-        view.subviews.forEach { view in
-            guard let v = view as? UIActivityIndicatorView else {
-                return
-            }
+        DispatchQueue.main.async {
+            let activityIndicator = UIActivityIndicatorView(style: .medium)
             
-            v.removeFromSuperview()
+            activityIndicator.tintColor = .color(.primary)
+            activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+            activityIndicator.startAnimating()
+            
+            self.view.addSubview(activityIndicator)
+            
+            activityIndicator.centerYAnchor(equalTo: self.view.centerYAnchor)
+            activityIndicator.centerXAnchor(equalTo: self.view.centerXAnchor)
         }
     }
     
+    public func hideLoading() {
+        DispatchQueue.main.async {
+            self.view.subviews.forEach { view in
+                guard let v = view as? UIActivityIndicatorView else {
+                    return
+                }
+                
+                v.removeFromSuperview()
+            }
+        }
+    }
+    
+    public func showAdvice(type: AdviceType, descriptionText: String? = nil, completionHandler: (() -> Void)? = nil) {
+        DispatchQueue.main.async {
+            guard let descriptionText = descriptionText else {
+                let adviceViewController = GenericAdviceViewController(type: type, completionHandler: completionHandler)
+                
+                self.present(adviceViewController, animated: true)
+                return
+            }
+
+            let adviceViewController = GenericAdviceViewController(type: type, descriptionText: descriptionText, completionHandler: completionHandler)
+            
+            self.present(adviceViewController, animated: true)
+        }
+    }
 }

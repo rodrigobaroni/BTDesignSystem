@@ -68,3 +68,20 @@ public class EmailSentSuccessImageView: UIImageView {
         image = UIImage(named: "emailSentSuccessImage")
     }
 }
+
+public class ErrorImageView: UIImageView {
+    
+    required init?(coder: NSCoder) {
+        fatalError()
+    }
+    
+    public init() {
+        super.init(frame: .zero)
+        
+        translatesAutoresizingMaskIntoConstraints = false
+        
+        contentMode = .scaleAspectFit
+        
+        image = UIImage(named: "ErrorImage")
+    }
+}

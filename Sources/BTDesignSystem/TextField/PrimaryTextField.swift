@@ -23,5 +23,7 @@ public class PrimaryTextField: UITextField {
         layer.cornerRadius = 4
         backgroundColor = .color(.background)
         layer.borderColor = UIColor.color(.background).cgColor
+        
+        heightAnchor(equalTo: 50)
     }
 }

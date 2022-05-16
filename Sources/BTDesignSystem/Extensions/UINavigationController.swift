@@ -18,6 +18,7 @@ extension UINavigationController {
         }
         let statusBarView = UIView(frame: statusBarFrame)
         statusBarView.backgroundColor = backgroundColor
+        
         view.addSubview(statusBarView)
     }
 
