@@ -15,6 +15,7 @@ public enum GenericHealthFields {
     case speciallity
     case medicine
     case dosage
+    case value
     
     
     public var value: String {
@@ -33,6 +34,8 @@ public enum GenericHealthFields {
             return "Medicamento"
         case .dosage:
             return "Dosagem"
+        case .value:
+            return "Valor"
         }
     }
 }
